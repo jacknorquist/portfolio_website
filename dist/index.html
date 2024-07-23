@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="
+https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css
+" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:ital@1&display=swap" rel="stylesheet">
   <title>My Three.js App</title>
   <style>
@@ -11,17 +14,31 @@
   </style>
 </head>
 <body>
-  <div id='canvas'></div>
-  <div class="home">
-    <H2>Jack Norquist</H2>
-    <p>I'm currently </p>
+  <div class="header">
+    <div class="headerbtn" id="aboutmebtn">
+      <h4>About Me</h4>
+   </div>
+   <div class="headerbtn" id="projectsbtn">
+    <h4>Projects</h4>
+ </div>
   </div>
-  <div class="about">
-    <H2>About</H2>
-    <p>Im obsessed with trying to figure things out. I love the moment when things
-      click. Software engineering has brought that feeling to me in every day of my
-      life through learning new 
+  <div id='canvas'></div>
+  <div class="about" id="aboutPage">
+    <div id="aboutPageCanvas"></div>
+    <H3 class="head"></H3>
+
+    <p>I graduated from UMD Duluth in 2021 with a degree in marketing and ecenomics. I worked in marketing and sales for construction materials providers and construction service companies. Through the comapnies' websites, I was introduced to softare engineering. I was intruiged from the start. The world of software engineering was intersting, challenging, and unqiue. I found it hard to stay away and tuaght myself fundementals on the side.
     </p>
+    <p>I was exposed to </p>
+  </div>
+  <div class="projects" id="projectsPage">
+    <div id="projectsPageCanvas"></div>
+    <H2>Projects</H2>
+    <p>Im obsessed with figuring things out. I love the moment when things
+      click. Software engineering brings that feeling to me everyday through
+      learning new tools, fixing bugs, and creating projects.
+    </p>
+    <p></p>
   </div>
   <div class="projects">
     <H2>Projects</H2>

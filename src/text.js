@@ -9,10 +9,31 @@ let textMesh
 
 function textAdd(text){
 
+  const objectsToRemove = [];
+
+  // Traverse through all children of the scene
+  scene.traverse(child => {
+      // Check if the child is a text object (example condition based on userData)
+      console.log('in here')
+      if (child instanceof THREE.Mesh && child.userData.isTextObject) {
+          // Add the object to the array of objects to be removed
+          objectsToRemove.push(child);
+      }
+  });
+
+  // Remove objects from the scene
+  objectsToRemove.forEach(object => {
+      scene.remove(object);
+  });
+
+
+
+  for (let i =0;  i<text.length;i++){
+
 const loader = new FontLoader();
   loader.load('https://cdn.jsdelivr.net/npm/three/examples/fonts/gentilis_regular.typeface.json', function(font) {
     // Create text geometry
-    const textGeometry = new TextGeometry(text, {
+    const textGeometry = new TextGeometry(text[i], {
       font: font,
       size: .4,
       height: 1,
@@ -26,8 +47,9 @@ const loader = new FontLoader();
 
     // Create text mesh
     textMesh = new THREE.Mesh(textGeometry, textMaterial);
+    textMesh.userData.isTextObject = true;
 
-    textMesh.position.y = 1
+    textMesh.position.y = i
 
     textMesh.position.x = -textWidth / 2;
     textMesh.position.z = 0;
@@ -35,34 +57,31 @@ const loader = new FontLoader();
     // Add text mesh to the scene
     scene.add(textMesh);
   });
+}
 
 
-  for (let i =0; i<3;i++){
-    let sphereShape
-    if(i === slide){
-    sphereShape = sphere(0xff0000)
-    }else{
-      sphereShape = sphere(0xffffff)
-    }
-    sphereShape.position.set(i-1,-1,0)
-    scene.add(sphereShape);
-  }
+
+
+  // for (let i =0; i<3;i++){
+  //   let sphereShape
+  //   if(i === slide){
+  //   sphereShape = sphere(0xff0000)
+  //   }else{
+  //     sphereShape = sphere(0xffffff)
+  //   }
+  //   sphereShape.position.set(i-1,0,0)
+  //   scene.add(sphereShape);
+  // }
 
 }
 
 let slide = 0
 const max = 3
-let textSlide=['Jack Norquist | Software Engineer', 'About Me', 'I Like Turtles']
+let textSlide=[['About Me','Jack Norquist | Software Engineer'],['Projects','Jack Norquist | Software Engineer']]
 
-function addText(plusOrMinus = 0){
-  slide+= plusOrMinus
-  if(slide >= max){
-    slide = 0
-  }else if(slide<0){
-    slide = 2
-  }
-  scene.remove(textMesh)
-  textAdd(textSlide[slide])
+function addText(index = 0){
+  slide = index
+  textAdd(textSlide[index])
 }
 
 

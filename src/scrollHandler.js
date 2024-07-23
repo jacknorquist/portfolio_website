@@ -12,19 +12,19 @@ function handleWheel(event) {
   const scrollDirection = deltaY < 0 ? 'up' : 'down';
   let slideDiv
   if(slide=== 0){
-    slideDiv = 'home'
-  }else if (slide === 1){
     slideDiv = 'about'
-  }else if(slide === 2){
+  }else if (slide === 1){
     slideDiv = 'projects'
   }
 
   if (scrollDirection === 'up' && Math.abs(deltaY) > 100) {
 
     const div = document.querySelector('.' + slideDiv);
-    div.classList.remove('active');
     const canvas = document.getElementById('canvas');
-    canvas.classList.remove('transition')
+    const header = document.querySelector('.header')
+    div.classList.remove('active');
+    canvas.classList.remove('transition');
+    header.classList.remove('inactive')
 
     // Delay resetting flag to allow for toggle completion
     setTimeout(() => {
@@ -32,9 +32,11 @@ function handleWheel(event) {
     }, 700); // Adjust as needed to match animation duration or toggle completion
   } else if (scrollDirection === 'down' && Math.abs(deltaY) > 100) {
     const div = document.querySelector('.' + slideDiv);
-    div.classList.add('active');
     const canvas = document.getElementById('canvas');
+    const header = document.querySelector('.header')
+    div.classList.add('active');
     canvas.classList.add('transition')
+    header.classList.add('inactive')
 
     // Delay resetting flag to allow for toggle completion
     setTimeout(() => {

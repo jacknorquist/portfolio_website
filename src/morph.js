@@ -5,7 +5,7 @@ import { addText, textMesh } from './text';
 
 let isMorphing = false
 
-function morphTorusKnot(mesh, plusOrMinus) {
+function morphTorusKnot(mesh, index) {
 
   isMorphing = true
   const initialGeometry = mesh.geometry.clone();
@@ -45,7 +45,7 @@ function morphTorusKnot(mesh, plusOrMinus) {
     })
     .onComplete(() => {
       tweenToOriginal.start();
-      addText(plusOrMinus) // Start the second tween after the first one completes
+      addText(index) // Start the second tween after the first one completes
     });
 
 

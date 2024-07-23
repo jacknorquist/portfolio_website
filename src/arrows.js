@@ -15,7 +15,7 @@ function rightArrow(){
   cone.position.set(1, 0, 0); // Position the cone at the end of the shaft
 
   const arrow = new THREE.Group();
-  arrow.scale.set(0.3, 0.3, 0.3);
+  arrow.scale.set(0.1, 0.1, 0.1);
   arrow.add(shaft, cone);
 
   return arrow
@@ -38,7 +38,7 @@ function leftArrow(){
   cone.position.set(0, 0, 0); // Position the cone at the end of the shaft
 
   const arrow = new THREE.Group();
-  arrow.scale.set(0.3, 0.3, 0.3);
+  arrow.scale.set(0.1, 0.1, 0.1);
   arrow.add(shaft, cone);
 
   return arrow

@@ -8,6 +8,8 @@ import './index.css';
 import { handleWheel } from './scrollHandler.js';
 import {  leftArrow, rightArrow } from './arrows.js';
 import { sphere } from './circles.js';
+import { generatePerlinNoise } from 'perlin-noise';
+
 
 let scene, camera, renderer;
 let torusKnotFront, torusKnotBack;
@@ -15,12 +17,12 @@ let windowHalfX = window.innerWidth / 2;
 let windowHalfY = window.innerHeight / 2;
 let textMesh;
 const canvas = document.getElementById('canvas')
-init();
-animate();
 
-function init() {
+initHomePage();
+animateHomePage();
+
+function initHomePage() {
   // Setup scene
-  const raycaster = new THREE.Raycaster();
   scene = new THREE.Scene();
 
   // Setup camera
@@ -58,23 +60,21 @@ function init() {
 
   addText()
 
-
-  const leftArrowShape= leftArrow();
-  leftArrowShape.position.set(-3,-1,0)
-  scene.add(leftArrowShape)
+  const aboutMeBtn = document.getElementById('aboutmebtn')
 
 
+  aboutMeBtn.addEventListener('click', function(){
+    if(!isMorphing){
+    morphShape(0);
+    }
+  })
+  const projectsBtn = document.getElementById('projectsbtn')
 
-
-  const rightArrowShape = rightArrow();
-  rightArrowShape.position.set(3,-1,0);
-  scene.add(rightArrowShape)
-
-
-
-
-
-
+  projectsBtn.addEventListener('click', function(){
+    if(!isMorphing){
+    morphShape(1);
+    }
+  })
 
   const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
   directionalLight.position.set(0, 5, 5);
@@ -82,52 +82,119 @@ function init() {
 
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
   scene.add(ambientLight);
-
-
-  function onClick(event) {
-
-    // Calculate mouse position in normalized device coordinates (-1 to +1)
-    const mouse = new THREE.Vector2();
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-    // Update the raycaster's origin
-    raycaster.setFromCamera(mouse, camera);
-
-    // Perform raycasting on each arrow group's children
-    const intersectsLeft = raycaster.intersectObjects(leftArrowShape.children, true);
-    const intersectsRight = raycaster.intersectObjects(rightArrowShape.children, true);
-
-    // Handle click on specific objects
-    if (intersectsLeft.length > 0) {
-      if(!isMorphing){
-      morphShape(-1)
-      }
-    } else if (intersectsRight.length > 0) {
-      if(!isMorphing){
-      morphShape(1)
-      }
-      // Add your logic for right arrow click here
-    }
-  }
-
-  document.addEventListener('click', onClick)
   window.addEventListener('resize', onWindowResize);
 }
 
-function animate() {
-  requestAnimationFrame(animate);
+function animateHomePage() {
+  requestAnimationFrame(animateHomePage);
 
-  // Update TWEEN
-  // Auto-rotation or other updates
   torusKnotFront.rotation.y += 0.01;
   torusKnotBack.rotation.y += 0.01;
-
   TWEEN.update();
-
-  // Render the scene
   renderer.render(scene, camera);
 }
+
+
+const aboutPage = document.getElementById('aboutPageCanvas');
+const projectsPage = document.getElementById('projectsPageCanvas');
+let sceneContent
+let backgroundGeometry
+let noise
+let noiseData;
+
+addBackGroundToContent();
+// animateContentPages()
+
+function addBackGroundToContent() {
+  const renderer1 = new THREE.WebGLRenderer({ antialias: true });
+  const renderer2 = new THREE.WebGLRenderer({ antialias: true });
+
+  renderer1.setSize(window.innerWidth, window.innerHeight);
+  renderer1.shadowMap.enabled = true;
+  renderer1.shadowMap.type = THREE.PCFSoftShadowMap;
+  aboutPage.appendChild(renderer2.domElement);
+  projectsPage.appendChild(renderer1.domElement);
+
+
+
+  // Scene
+  const sceneContent = new THREE.Scene();
+
+  // Camera
+  const camera1 = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera1.position.set(0, 0, 5);
+
+  // Create a plane geometry
+  const geometry = new THREE.PlaneGeometry(30, 30, 3, 6);
+
+  // Adjust vertices to create a wavy effect
+  const positions = geometry.attributes.position;
+  const vertex = new THREE.Vector3();
+
+  for (let i = 0; i < positions.count; i++) {
+    vertex.fromBufferAttribute(positions, i);
+    vertex.z = Math.sin(vertex.x * 0.5) * 0.5;
+    positions.setY(i, vertex.y); // Set y positions to zero to create horizontal lines
+  }
+
+  // Material
+  const material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, side: THREE.DoubleSide, wireframe: true });
+
+  // Mesh
+  const plane = new THREE.Mesh(geometry, material);
+  sceneContent.add(plane);
+
+  // Ensure the geometry updates correctly
+  positions.needsUpdate = true;
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+  directionalLight.position.set(0, 5, 5);
+  sceneContent.add(directionalLight);
+
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+  sceneContent.add(ambientLight);
+
+  const clock = new THREE.Clock();
+
+
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    // Update vertices based on time
+    const time = clock.getElapsedTime();
+    for (let i = 0; i < positions.count; i++) {
+      vertex.fromBufferAttribute(positions, i);
+      vertex.z = Math.sin(vertex.y * 0.2 + time) * 0.2;
+      positions.setZ(i, vertex.z);
+    }
+
+    // Ensure the geometry updates correctly
+    positions.needsUpdate = true;
+
+    renderer1.render(sceneContent, camera1);
+    renderer2.render(sceneContent, camera1);
+  }
+
+  animate();
+}
+
+
+
+
+// function animateContentPages() {
+//   requestAnimationFrame(animateContentPages);
+
+//   // Update wave animation
+//   for (let i = 0; i < backgroundGeometry.vertices.length; i++) {
+//       const vertex = backgroundGeometry.vertices[i];
+//       vertex.z = noise.simplex3(vertex.x / 5 + Date.now() * 0.001, vertex.y / 5, 0) * 2; // Adjust speed of animation with multiplier
+//   }
+//   backgroundGeometry.verticesNeedUpdate = true; // Update vertices after modification
+
+//   // Render scene
+//   renderer.render(scene, camera);
+// }
+
 
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
@@ -135,19 +202,12 @@ function onWindowResize() {
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-function morphShape(plusOrMinus) {
-  morphTorusKnot(torusKnotBack, plusOrMinus);
+function morphShape(index) {
+  morphTorusKnot(torusKnotBack, index);
 }
 
 
 
-
-
-// window.addEventListener('click', function() {
-//   if(!isMorphing){
-//   morphShape();
-//   }
-// });
 
 
 
@@ -156,8 +216,4 @@ function morphShape(plusOrMinus) {
 
 
 document.addEventListener('wheel', handleWheel, { passive: true});
-
-
-
-
 export {textMesh, scene}
