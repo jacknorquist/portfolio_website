@@ -23,7 +23,7 @@ function morphTorusKnot(mesh, index) {
 
   // First tween: morph to the target shape
   const tweenToTarget = new TWEEN.Tween({ morph: 0 })
-    .to({ morph: 1 }, 1000)
+    .to({ morph: 1 }, 800)
     .easing(TWEEN.Easing.Quadratic.InOut)
     .onUpdate((obj) => {
       // Loop through each vertex in the buffer attribute
@@ -52,7 +52,7 @@ function morphTorusKnot(mesh, index) {
 
   // Second tween: morph back to the original shape
   const tweenToOriginal = new TWEEN.Tween({ morph: 1 })
-    .to({ morph: 0 }, 1000)
+    .to({ morph: 0 }, 800)
     .easing(TWEEN.Easing.Quadratic.InOut)
     .onUpdate((obj) => {
       // Loop through each vertex in the buffer attribute

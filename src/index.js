@@ -88,8 +88,8 @@ function initHomePage() {
 function animateHomePage() {
   requestAnimationFrame(animateHomePage);
 
-  torusKnotFront.rotation.y += 0.01;
-  torusKnotBack.rotation.y += 0.01;
+  torusKnotFront.rotation.y += 0.005;
+  torusKnotBack.rotation.y += 0.005;
   TWEEN.update();
   renderer.render(scene, camera);
 }
@@ -112,6 +112,9 @@ function addBackGroundToContent() {
   renderer1.setSize(window.innerWidth, window.innerHeight);
   renderer1.shadowMap.enabled = true;
   renderer1.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer2.setSize(window.innerWidth, window.innerHeight);
+  renderer2.shadowMap.enabled = true;
+  renderer2.shadowMap.type = THREE.PCFSoftShadowMap;
   aboutPage.appendChild(renderer2.domElement);
   projectsPage.appendChild(renderer1.domElement);
 
@@ -125,7 +128,7 @@ function addBackGroundToContent() {
   camera1.position.set(0, 0, 5);
 
   // Create a plane geometry
-  const geometry = new THREE.PlaneGeometry(30, 30, 3, 6);
+  const geometry = new THREE.PlaneGeometry(30, 30, 20, 20);
 
   // Adjust vertices to create a wavy effect
   const positions = geometry.attributes.position;
@@ -138,7 +141,7 @@ function addBackGroundToContent() {
   }
 
   // Material
-  const material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, side: THREE.DoubleSide, wireframe: true });
+  const material = new THREE.MeshBasicMaterial({ color: 0x2a0000, side: THREE.DoubleSide, wireframe: true });
 
   // Mesh
   const plane = new THREE.Mesh(geometry, material);
@@ -164,7 +167,7 @@ function addBackGroundToContent() {
     const time = clock.getElapsedTime();
     for (let i = 0; i < positions.count; i++) {
       vertex.fromBufferAttribute(positions, i);
-      vertex.z = Math.sin(vertex.y * 0.2 + time) * 0.2;
+      vertex.z = Math.sin(vertex.x * 5 + time) * 2;
       positions.setZ(i, vertex.z);
     }
 
