@@ -141,7 +141,7 @@ function addBackGroundToContent() {
   }
 
   // Material
-  const material = new THREE.MeshBasicMaterial({ color: 0x2a0000, side: THREE.DoubleSide, wireframe: true });
+  const material = new THREE.MeshBasicMaterial({ color: 0x460000, side: THREE.DoubleSide, wireframe: true });
 
   // Mesh
   const plane = new THREE.Mesh(geometry, material);

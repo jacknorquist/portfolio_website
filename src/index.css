@@ -1,5 +1,6 @@
 body{
   background-color: black;
+
 }
 
 .header{
@@ -123,7 +124,7 @@ body{
   margin-top: 1em;
   padding: 1em;
   border-radius: .5rem;
-  background-color: rgba(206, 202, 202, 0.123);
+  background-color: rgba(206, 202, 202, 0.568);
   opacity: 1;
 }
 
