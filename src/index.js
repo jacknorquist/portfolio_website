@@ -6,7 +6,7 @@ import {morphTorusKnot, isMorphing} from './morph.js';
 import { addText, slide} from './text.js';
 import './index.css';
 import { handleWheel } from './scrollHandler.js';
-import {  leftArrow, rightArrow } from './arrows.js';
+import {  upArrow, downArrow} from './arrows.js';
 import { sphere } from './circles.js';
 import { generatePerlinNoise } from 'perlin-noise';
 
@@ -55,6 +55,17 @@ function initHomePage() {
   // Add to scene
   scene.add(torusKnotBack);
   scene.add(torusKnotFront);
+
+
+  //arrow
+  const leftDownArrowShape = downArrow()
+  leftDownArrowShape.position.set(-4.5,-2.5,0)
+  scene.add(leftDownArrowShape)
+
+  const rightDownArrowShape = downArrow()
+  rightDownArrowShape.position.set(4.5,-2.5,0)
+  scene.add(rightDownArrowShape)
+
 
   // Add lights
 
@@ -112,9 +123,11 @@ function addBackGroundToContent() {
   renderer1.setSize(window.innerWidth, window.innerHeight);
   renderer1.shadowMap.enabled = true;
   renderer1.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer1.setClearColor(0xffffff)
   renderer2.setSize(window.innerWidth, window.innerHeight);
   renderer2.shadowMap.enabled = true;
   renderer2.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer2.setClearColor(0xffffff)
   aboutPage.appendChild(renderer2.domElement);
   projectsPage.appendChild(renderer1.domElement);
 
@@ -156,6 +169,15 @@ function addBackGroundToContent() {
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
   sceneContent.add(ambientLight);
 
+
+  const leftUpArrow = upArrow()
+  leftUpArrow.position.set(-4.5,3,0)
+  sceneContent.add(leftUpArrow);
+
+  const rightUpArrow = upArrow()
+  rightUpArrow.position.set(4.5,3,0)
+  sceneContent.add(rightUpArrow)
+
   const clock = new THREE.Clock();
 
 
@@ -167,7 +189,7 @@ function addBackGroundToContent() {
     const time = clock.getElapsedTime();
     for (let i = 0; i < positions.count; i++) {
       vertex.fromBufferAttribute(positions, i);
-      vertex.z = Math.sin(vertex.x * 5 + time) * 2;
+      vertex.z = Math.sin(vertex.x * 5 + time) *1;
       positions.setZ(i, vertex.z);
     }
 
@@ -219,4 +241,4 @@ function morphShape(index) {
 
 
 document.addEventListener('wheel', handleWheel, { passive: true});
-export {textMesh, scene}
+export {textMesh, scene, camera, renderer}
