@@ -111,6 +111,7 @@ body{
   font-size: 3rem;
   border-bottom: .5px solid rgb(0, 0, 0);
   text-align: center;
+  color: black;
 }
 
 .paragraph{
@@ -146,6 +147,7 @@ section > *{
   color: black;
 }
 .stats{
+  border-radius: .5rem;
   display: flex;
   align-items: center;
   text-align: center;
