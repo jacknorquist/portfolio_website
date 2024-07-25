@@ -38,6 +38,8 @@ function handleWheel(event) {
     canvas.classList.add('transition')
     header.classList.add('inactive')
 
+    div.scrollIntoView(true);
+
     // Delay resetting flag to allow for toggle completion
     setTimeout(() => {
       isToggling = false;
