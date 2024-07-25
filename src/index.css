@@ -5,7 +5,6 @@ body{
 
 .header{
   display: flex;
-  justify-content: space-between;
   align-items: center;
   background-color: white;
 }
@@ -15,15 +14,26 @@ body{
 }
 
 .headerbtn{
-  width: 50%;
+  width: 45%;
   text-align: center;
   cursor: pointer;
   border-left: .5px solid black;
   border-right: .5px solid black;
 }
+.socials{
+  width: 10%;
+  text-align: center;
+}
+
+.navButtons{
+  display: flex;
+  width: 90%;
+  justify-content: flex-start;
+}
 
 .icon{
-  padding-left: 1rem;
+  font-size: 2rem;
+  padding: 1rem;
   color: black;
 }
 
