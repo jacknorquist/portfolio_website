@@ -67,7 +67,6 @@ function initHomePage() {
   rightDownArrowShape.position.set(4.5,-2.5,0)
   scene.add(rightDownArrowShape);
 
-  initializeGame()
 
 
   // Add lights
