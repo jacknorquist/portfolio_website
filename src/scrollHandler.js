@@ -19,12 +19,15 @@ function handleWheel(event) {
 
   if (scrollDirection === 'up' && Math.abs(deltaY) > 100) {
 
+
     const div = document.querySelector('.' + slideDiv);
+    if(div.classList.contains('active')){
     const canvas = document.getElementById('canvas');
-    const header = document.querySelector('.header')
+    const header = document.querySelector('.header');
     div.classList.remove('active');
     canvas.classList.remove('transition');
     header.classList.remove('inactive')
+    }
 
     // Delay resetting flag to allow for toggle completion
     setTimeout(() => {
@@ -32,18 +35,22 @@ function handleWheel(event) {
     }, 700); // Adjust as needed to match animation duration or toggle completion
   } else if (scrollDirection === 'down' && Math.abs(deltaY) > 100) {
     const div = document.querySelector('.' + slideDiv);
+    if(div.classList.contains('active')){
+      return
+    }
+
     const canvas = document.getElementById('canvas');
-    const header = document.querySelector('.header')
+    const header = document.querySelector('.header');
     div.classList.add('active');
     canvas.classList.add('transition')
-    header.classList.add('inactive')
-
-    div.scrollIntoView(true);
+    header.classList.add('inactive');
 
     // Delay resetting flag to allow for toggle completion
+
     setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       isToggling = false;
-    }, 700); // Adjust as needed to match animation duration or toggle completion
+    }, 400);
   } else {
     isToggling = false; // Reset flag if no significant scroll detected
   }
