@@ -9,7 +9,6 @@ import { handleWheel } from './scrollHandler.js';
 import {  upArrow, downArrow} from './arrows.js';
 import { sphere } from './circles.js';
 import { generatePerlinNoise } from 'perlin-noise';
-import initializeGame from './snake.js';
 
 
 let scene, camera, renderer;
