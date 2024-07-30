@@ -170,9 +170,8 @@ section > *{
   align-items: center;
   text-align: center;
   justify-content: center;
-  width: 50%;
+  width: 65%;
   text-align: left;
-  padding-left: 1rem;
   font-size: 1.5rem;
   margin: auto;
   background-color: rgba(0, 0, 0, 0.829);
@@ -195,4 +194,14 @@ section > *{
 
 .flex{
   display:flex;
+}
+
+.tech{
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.829);
+  width: 60%;
+  margin: auto;
+  overflow-x: scroll;
+  text-wrap: nowrap;
+  color: white;
 }

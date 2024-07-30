@@ -189,7 +189,7 @@ function addBackGroundToContent() {
     const time = clock.getElapsedTime();
     for (let i = 0; i < positions.count; i++) {
       vertex.fromBufferAttribute(positions, i);
-      vertex.z = Math.sin(vertex.x * 5 + time) *1;
+      vertex.z = Math.sin(vertex.x * 5 + time) *.3;
       positions.setZ(i, vertex.z);
     }
 
