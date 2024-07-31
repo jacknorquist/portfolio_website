@@ -242,4 +242,7 @@ function morphShape(index) {
 
 
 document.addEventListener('wheel', handleWheel, { passive: true});
+
+//for touch scroll
+document.addEventListener('scrool', handleWheel, { passive: true});
 export {textMesh, scene, camera, renderer}

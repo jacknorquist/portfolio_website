@@ -5,7 +5,8 @@ import { scene } from '.';
 import { sphere } from './circles';
 
 
-let textMesh
+let textMesh;
+const fontSizeFactor = 0.00031;
 
 function textAdd(text){
 
@@ -14,7 +15,6 @@ function textAdd(text){
   // Traverse through all children of the scene
   scene.traverse(child => {
       // Check if the child is a text object (example condition based on userData)
-      console.log('in here')
       if (child instanceof THREE.Mesh && child.userData.isTextObject) {
           // Add the object to the array of objects to be removed
           objectsToRemove.push(child);
@@ -32,10 +32,13 @@ function textAdd(text){
 
 const loader = new FontLoader();
   loader.load('https://cdn.jsdelivr.net/npm/three/examples/fonts/gentilis_regular.typeface.json', function(font) {
+
+    const viewportWidth = window.innerWidth;
+    const fontSize = viewportWidth * fontSizeFactor;
     // Create text geometry
     const textGeometry = new TextGeometry(text[i], {
       font: font,
-      size: .4,
+      size: fontSize,
       height: 1,
       depth: .05,
       bevelEnabled: false
