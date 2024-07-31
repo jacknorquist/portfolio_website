@@ -57,7 +57,7 @@ function handleWheel(event) {
 }
 
 let touchStartX, touchStartY, touchEndX, touchEndY;
-const swipeThreshold = 50;
+const swipeThreshold = 100;
 
 
 // Handle touch start event
