@@ -122,6 +122,7 @@ body{
   border-bottom: .5px solid rgb(0, 0, 0);
   text-align: center;
   color: black;
+
 }
 
 .paragraph{
@@ -152,18 +153,26 @@ section > *{
   opacity: 1;
 }
 
+.sectionHeader{
+  border-bottom: .8px solid white;
+}
+
+.sectionHeader > h5{
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
 .link{
   color: rgb(255, 255, 255);
 }
 
 .profile{
   width: 70%;
-
   justify-content: center;
   align-items: center;
   margin: auto;
   color: black;
 }
+
 .stats{
   border-radius: .5rem;
   width: 100%;
@@ -171,7 +180,7 @@ section > *{
   align-items: center;
   text-align: center;
   justify-content: center;
-  width: 65%;
+  width: 60%;
   text-align: left;
   font-size: 1.5rem;
   margin: auto;
@@ -182,6 +191,7 @@ section > *{
 .stats p{
   padding-left: 1rem;
   padding-right: 1rem;
+  font-size: .6em;
 }
 
 
@@ -216,7 +226,9 @@ section > *{
   width: 60%;
   margin: auto;
 }
-
+.projectSection > h5{
+  font-size: 1em;
+}
 .projectSection1{
   grid-row: 1/2;
   grid-column: 1/2;
@@ -225,6 +237,7 @@ section > *{
   border-radius: .5rem;
   padding: 1rem;
   height: 20vh;
+  font-size: 1.2em;
 }
 
 .projectSection2{
@@ -235,6 +248,7 @@ section > *{
   border-radius: .5rem;
   padding: 1rem;
   height: 20vh;
+  font-size: 1.2em;
 }
 .projectSection3{
   grid-column: 3/4;
@@ -244,6 +258,7 @@ section > *{
   border-radius: .5rem;
   padding: 1rem;
   height: 20vh;
+  font-size: 1.2em;
 }
 .projectSection4{
   grid-column: 1/2;
@@ -253,6 +268,7 @@ section > *{
   border-radius: .5rem;
   padding: 1rem;
   height: 20vh;
+  font-size: 1.2em;
 }
 .projectSection5{
   grid-column: 2/3;
@@ -262,6 +278,7 @@ section > *{
   border-radius: .5rem;
   padding: 1rem;
   height: 20vh;
+  font-size: 1.2em;
 }
 .projectSection6{
   grid-column: 3/4;
@@ -271,9 +288,18 @@ section > *{
   border-radius: .5rem;
   padding: 1rem;
   height: 20vh;
+  font-size: 1.2em;
 }
 
 
 .projectTitle{
   margin-top: 0;
+  font-size: 1.2em;
+}
+
+p {
+  font-size: .8em;
+}
+.content{
+  background-color: rgba(0, 0, 0, 0.829);
 }

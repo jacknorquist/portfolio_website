@@ -4,6 +4,7 @@ let isToggling = false; // Flag to track toggle state
 
 // Function to handle wheel event
 function handleWheel(event) {
+  event.preventDefault()
   if (isToggling) return; // Exit early if toggle is already in progress
   isToggling = true; // Set flag to true to prevent multiple toggles
 
@@ -35,23 +36,22 @@ function handleWheel(event) {
     }, 700); // Adjust as needed to match animation duration or toggle completion
   } else if (scrollDirection === 'down' && Math.abs(deltaY) > 100) {
     const div = document.querySelector('.' + slideDiv);
-    if(div.classList.contains('active')){
-      return
-    }
 
-    const canvas = document.getElementById('canvas');
-    const header = document.querySelector('.header');
-    div.classList.add('active');
-    canvas.classList.add('transition')
-    header.classList.add('inactive');
 
-    // Delay resetting flag to allow for toggle completion
+      const canvas = document.getElementById('canvas');
+      const header = document.querySelector('.header');
+      div.classList.add('active');
+      canvas.classList.add('transition')
+      header.classList.add('inactive');
 
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      isToggling = false;
-    }, 400);
-  } else {
+      // Delay resetting flag to allow for toggle completion
+      
+      setTimeout(() => {
+        isToggling = false;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 550);
+
+    } else {
     isToggling = false; // Reset flag if no significant scroll detected
   }
 }
