@@ -45,7 +45,7 @@ function handleWheel(event) {
       header.classList.add('inactive');
 
       // Delay resetting flag to allow for toggle completion
-      
+
       setTimeout(() => {
         isToggling = false;
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -56,6 +56,33 @@ function handleWheel(event) {
   }
 }
 
+let touchStartX, touchStartY, touchEndX, touchEndY;
+const swipeThreshold = 50;
 
 
-export {handleWheel}
+// Handle touch start event
+function handleTouchStart(event) {
+  const touch = event.touches[0];
+  touchStartX = touch.clientX;
+  touchStartY = touch.clientY;
+}
+
+// Handle touch end event
+function handleTouchEnd(event) {
+  const touch = event.changedTouches[0];
+  touchEndX = touch.clientX;
+  touchEndY = touch.clientY;
+
+  const deltaX = touchEndX - touchStartX;
+  const deltaY = touchEndY - touchStartY;
+
+  if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > swipeThreshold) {
+      const simulatedEvent = { deltaY: deltaY > 0 ? 100 : -100 };
+      handleWheel(simulatedEvent); // Simulate a wheel event
+  }
+}
+
+
+
+
+export {handleWheel, handleTouchStart, handleTouchEnd}

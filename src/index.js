@@ -5,7 +5,7 @@ import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import {morphTorusKnot, isMorphing} from './morph.js';
 import { addText, slide} from './text.js';
 import './index.css';
-import { handleWheel } from './scrollHandler.js';
+import { handleWheel, handleTouchStart, handleTouchEnd } from './scrollHandler.js';
 import {  upArrow, downArrow} from './arrows.js';
 import { sphere } from './circles.js';
 import { generatePerlinNoise } from 'perlin-noise';
@@ -242,7 +242,7 @@ function morphShape(index) {
 
 
 document.addEventListener('wheel', handleWheel, { passive: true});
+window.addEventListener('touchstart', handleTouchStart);
+window.addEventListener('touchend', handleTouchEnd);
 
-//for touch scroll
-document.addEventListener('scroll', handleWheel, { passive: true});
 export {textMesh, scene, camera, renderer}
