@@ -182,7 +182,7 @@ function addBackGroundToContent() {
   const leftUpArrow = upArrow()
 
   if(window.innerWidth < 500){
-    leftUpArrow.position.set(-1.2,3,0)
+    leftUpArrow.position.set(-1.3,3,0)
   }else{
   leftUpArrow.position.set(-4.5,3,0)
   }
@@ -190,7 +190,7 @@ function addBackGroundToContent() {
 
   const rightUpArrow = upArrow()
   if(window.innerWidth < 500){
-    rightUpArrow.position.set(1.2,3,0)
+    rightUpArrow.position.set(1.3,3,0)
   }else{
   rightUpArrow.position.set(4.5,3,0)
   }
