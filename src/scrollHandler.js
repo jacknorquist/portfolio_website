@@ -4,7 +4,6 @@ let isToggling = false; // Flag to track toggle state
 
 // Function to handle wheel event
 function handleWheel(event) {
-  event.preventDefault()
   if (isToggling) return; // Exit early if toggle is already in progress
   isToggling = true; // Set flag to true to prevent multiple toggles
 
@@ -35,6 +34,7 @@ function handleWheel(event) {
       isToggling = false;
     }, 700); // Adjust as needed to match animation duration or toggle completion
   } else if (scrollDirection === 'down' && Math.abs(deltaY) > 100) {
+    console.log('in class switch')
     const div = document.querySelector('.' + slideDiv);
 
 
@@ -77,7 +77,7 @@ function handleTouchEnd(event) {
   const deltaY = touchEndY - touchStartY;
 
   if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > swipeThreshold) {
-      const simulatedEvent = { deltaY: deltaY > 0 ? 100 : -100 };
+      const simulatedEvent = { deltaY: deltaY > 0 ? -101 : 101 };
       handleWheel(simulatedEvent); // Simulate a wheel event
   }
 }
