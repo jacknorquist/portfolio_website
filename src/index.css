@@ -199,7 +199,6 @@ section > *{
 
 .stats{
   border-radius: .5rem;
-  width: 100%;
   display: flex;
   align-items: center;
   text-align: center;
@@ -226,8 +225,8 @@ section > *{
   height: 20rem;
   object-fit: cover;
   shape-outside: circle(50%);
-
 }
+
 
 .flex{
   display:flex;
@@ -326,4 +325,121 @@ p {
 }
 .content{
   background-color: rgba(0, 0, 0, 0.829);
+}
+@media (max-width:480px){
+  .profile{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: black;
+  }
+  .stats{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    text-align: left;
+    font-size: 1.5rem;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.829);
+    color: white;
+  }
+
+  .profileImage{
+    filter: grayscale(100%);
+    border-radius: 50%;
+    width: 12rem;
+    height: 12rem;
+    object-fit: cover;
+    shape-outside: circle(50%);
+  }
+
+  .aboutContainer{
+    padding-top: 1rem;
+    width: 100%;
+    margin: auto;
+    font-size: 1.5rem;
+    overflow-y: auto;
+  }
+
+  .title{
+    font-size: 1.5rem;
+    border-bottom: .5px solid rgb(0, 0, 0);
+    text-align: center;
+    color: black;
+  }
+  .projectsGrid{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto;
+    width: 100%;
+    margin: auto;
+  }
+  .projectSection > h5{
+    font-size: 1em;
+  }
+  .projectSection1{
+    grid-row: 1/2;
+    grid-column: 1/2;
+    background-color: rgba(0, 0, 0, 0.829);
+    margin: 1rem;
+    border-radius: .5rem;
+    padding: 1em;
+    height: 20vh;
+    font-size: 1.2em;
+  }
+
+  .projectSection2{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    background-color: rgba(0, 0, 0, 0.829);
+    margin: 1rem;
+    border-radius: .5rem;
+    padding: 1em;
+    height: 20vh;
+    font-size: 1.2em;
+  }
+  .projectSection3{
+    grid-column: 1/2;
+    grid-row: 3/4;
+    background-color: rgba(0, 0, 0, 0.829);
+    margin: 1rem;
+    border-radius: .5rem;
+    padding: 1em;
+    height: 20vh;
+    font-size: 1.2em;
+  }
+  .projectSection4{
+    grid-column: 1/2;
+    grid-row: 4/5;
+    background-color: rgba(0, 0, 0, 0.829);
+    margin: 1rem;
+    border-radius: .5rem;
+    padding: 1em;
+    height: 20vh;
+    font-size: 1.2em;
+  }
+  .projectSection5{
+    grid-column: 1/2;
+    grid-row: 5/6;
+    background-color: rgba(0, 0, 0, 0.829);
+    margin: 1rem;
+    border-radius: .5rem;
+    padding: 1em;
+    height: 20vh;
+    font-size: 1.2em;
+  }
+  .projectSection6{
+    grid-column: 1/2;
+    grid-row: 6/7;
+    background-color: rgba(0, 0, 0, 0.829);
+    margin: 1rem;
+    border-radius: .5rem;
+    padding: 1em;
+    height: 20vh;
+    font-size: 1.2em;
+  }
+
 }
