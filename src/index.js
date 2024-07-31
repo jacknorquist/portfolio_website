@@ -59,11 +59,19 @@ function initHomePage() {
 
   //arrow
   const leftDownArrowShape = downArrow()
+  if(window.innerWidth < 500){
+    leftDownArrowShape.position.set(-1,-1,0)
+  }else{
   leftDownArrowShape.position.set(-4.5,-2.5,0)
+  }
   scene.add(leftDownArrowShape)
 
   const rightDownArrowShape = downArrow()
+  if(window.innerWidth < 500){
+    rightDownArrowShape.position.set(1,-1,0)
+  }else{
   rightDownArrowShape.position.set(4.5,-2.5,0)
+  }
   scene.add(rightDownArrowShape);
 
 
@@ -172,11 +180,20 @@ function addBackGroundToContent() {
 
 
   const leftUpArrow = upArrow()
+
+  if(window.innerWidth < 500){
+    leftUpArrow.position.set(-1.2,3,0)
+  }else{
   leftUpArrow.position.set(-4.5,3,0)
+  }
   sceneContent.add(leftUpArrow);
 
   const rightUpArrow = upArrow()
+  if(window.innerWidth < 500){
+    rightUpArrow.position.set(1.2,3,0)
+  }else{
   rightUpArrow.position.set(4.5,3,0)
+  }
   sceneContent.add(rightUpArrow)
 
   const clock = new THREE.Clock();
