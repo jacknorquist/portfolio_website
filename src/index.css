@@ -341,8 +341,7 @@ p {
     align-items: center;
     text-align: center;
     justify-content: center;
-    text-align: left;
-    font-size: 1.5rem;
+    font-size: .6em;
     margin: auto;
     background-color: rgba(0, 0, 0, 0.829);
     color: white;
@@ -361,7 +360,7 @@ p {
     padding-top: 1rem;
     width: 100%;
     margin: auto;
-    font-size: 1.5rem;
+    font-size: 1rem;
     overflow-y: auto;
   }
 
