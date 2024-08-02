@@ -185,6 +185,7 @@ section > *{
   padding-left: .5rem;
   padding-right: .5rem;
   justify-content: space-between;
+  align-items: center;
 }
 
 .sectionHeader > h5{
