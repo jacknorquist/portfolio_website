@@ -179,6 +179,12 @@ section > *{
 
 .sectionHeader{
   border-bottom: .8px solid white;
+  background-color: white;
+  color:black;
+  display: flex;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  justify-content: space-between;
 }
 
 .sectionHeader > h5{
