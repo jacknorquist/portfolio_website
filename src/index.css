@@ -14,21 +14,21 @@ body{
 }
 
 .licon:hover > p{
-    display: block;
+    display: inline-block;
     position:relative;
     background-color: gray;
     z-index: 1000;
 }
 
 .gicon:hover > p{
-  display: block;
+  display: inline;
   position:relative;
   background-color: gray;
   z-index: 1000;
 }
 
 .ricon:hover > p{
-  display: block;
+  display: inline;
   position:relative;
   background-color: gray;
   z-index: 1000;
