@@ -13,23 +13,45 @@ body{
   display: none;
 }
 
+.licon{
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+
+}
+.gicon{
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+}
+
+.ricon{
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+}
+
+
 .licon:hover > p{
-    display: inline-block;
-    position:relative;
+    display: block;
+    position: absolute;
     background-color: gray;
     z-index: 1000;
 }
 
 .gicon:hover > p{
-  display: inline;
-  position:relative;
+  display: block;
+  position:absolute;
   background-color: gray;
   z-index: 1000;
 }
 
 .ricon:hover > p{
-  display: inline;
-  position:relative;
+  display: block;
+  position:absolute;
   background-color: gray;
   z-index: 1000;
 }
