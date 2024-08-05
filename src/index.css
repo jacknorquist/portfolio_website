@@ -9,9 +9,33 @@ body{
   background-color: white;
 }
 
-.header.inactive{
+.descriptionText{
   display: none;
 }
+
+.licon:hover > p{
+    display: block;
+    position:relative;
+    background-color: gray;
+    z-index: 1000;
+}
+
+.gicon:hover > p{
+  display: block;
+  position:relative;
+  background-color: gray;
+  z-index: 1000;
+}
+
+.ricon:hover > p{
+  display: block;
+  position:relative;
+  background-color: gray;
+  z-index: 1000;
+}
+
+
+
 
 .headerbtn{
   width: 42.5%;
