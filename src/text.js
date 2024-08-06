@@ -34,7 +34,9 @@ const loader = new FontLoader();
   loader.load('https://cdn.jsdelivr.net/npm/three/examples/fonts/gentilis_regular.typeface.json', function(font) {
 
     const viewportWidth = window.innerWidth;
-    const fontSize = viewportWidth * fontSizeFactor;
+    const fontSize = viewportWidth > 480 ? .4 : .15;
+    console.log(viewportWidth)
+
     // Create text geometry
     const textGeometry = new TextGeometry(text[i], {
       font: font,
