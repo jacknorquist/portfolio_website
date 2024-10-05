@@ -301,6 +301,15 @@ section > *{
   width: 60%;
   margin: auto;
 }
+
+.projectSection{
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.829);
+  margin: 1rem;
+  border-radius: .5rem;
+  padding: 1rem;
+  font-size: 1.2em;
+}
 .projectSection > h5{
   font-size: 1em;
 }
