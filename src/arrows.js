@@ -7,6 +7,7 @@ function downArrow() {
 
   const whiteMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
 
+
   const shaft = new THREE.Mesh(shaftGeometry, whiteMaterial);
   const cone = new THREE.Mesh(coneGeometry, whiteMaterial);
 
